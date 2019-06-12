@@ -38,6 +38,7 @@ function loadSubject(props = {}) {
 }
 
 describe("ThankYouCard", () => {
+  // Before each test load the subject of the test
   beforeEach(() => {
     loadSubject();
   });
@@ -45,6 +46,23 @@ describe("ThankYouCard", () => {
   describe("#render", () => {
     it("matches snapshot", () => {
       expect(subject).toMatchSnapshot();
+    });
+  });
+
+  describe("#setCanvasSize", () => {
+    it("updates the canvas width and height", () => {
+      //Arrange, Given, etc
+      let canvas = {};
+      const width = 200;
+      const height = 100;
+
+      //Act, Expect, When, etc
+      //instance is an enzyme object so you can call all "this." functions
+      subject.instance().setCanvasSize(canvas, width, height);
+
+      //Assert, Then, etc
+      expect((canvas.width = width));
+      expect((canvas.height = height));
     });
   });
 });
